@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import runmode, {getLanguage} from './runmode'
 
-type Tokens = {
+interface Token {
   text: string,
   style: string | null
 }
+
+type Tokens = Token[]
 
 const RemarkCode: React.FC<
   React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
@@ -33,7 +35,7 @@ const RemarkCode: React.FC<
   if (spans.length > 0) {
     return (
       <code>
-        {spans.map((span, i) => (
+        {spans.map((span:Token , i: number) => (
           <span key={i} className={span.style || ''}>
             {span.text}
           </span>
