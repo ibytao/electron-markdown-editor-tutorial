@@ -16,11 +16,16 @@
     "lint": "eslint . --ext js,ts,vue",
     "typecheck-main": "tsc --noEmit -p packages/main/tsconfig.json",
     "typecheck-preload": "tsc --noEmit -p packages/preload/tsconfig.json",
-    "typecheck-renderer": "tsc --noEmit -p packages/renderer/tsconfig.json"
+    "typecheck-renderer": "tsc --noEmit -p packages/renderer/tsconfig.json",
+    "typecheck": "npm run typecheck-main"
   },
   "browserslist": [
     "Chrome 94"
   ],
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged",
+    "pre-push": "npm run typecheck"
+  },
   "lint-staged": {
     "*.{js,ts}": "eslint --cache --fix"
   },
