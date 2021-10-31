@@ -29,6 +29,8 @@ let mainWindow: BrowserWindow | null = null;
 const createWindow = async () => {
   mainWindow = new BrowserWindow({
     show: false, // Use 'ready-to-show' event to show window
+    vibrancy: 'under-window',
+    visualEffectState: 'active',
     webPreferences: {
       nativeWindowOpen: true,
       preload: join(__dirname, '../../preload/dist/index.cjs'),
@@ -91,4 +93,3 @@ if (import.meta.env.PROD) {
     .then(({autoUpdater}) => autoUpdater.checkForUpdatesAndNotify())
     .catch((e) => console.error('Failed check updates:', e));
 }
-
